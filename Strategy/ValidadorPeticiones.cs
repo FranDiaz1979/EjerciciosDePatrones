@@ -6,33 +6,22 @@ namespace Strategy
 {
     public class ValidadorPeticiones
     {
+        private IValidadorStrategy validadorStrategy;
+
+        public void SetStrategy(IValidadorStrategy validadorStrategyParam)
+        {
+            this.validadorStrategy = validadorStrategyParam;
+        }
+
         public bool Validar(Peticion peticion)
         {
-            switch (peticion.TipoPeticion)
+            if (validadorStrategy==null)
             {
-                case TipoPeticion.FormaDePago:
-                    return ValidarFormaDePago(peticion);
-
-                case TipoPeticion.OrdenDeCobro:
-                    return ValidarOrdenDeCobro(peticion);
-                default:
-                    return false;
+                throw new ArgumentNullException(nameof(validadorStrategy));
             }
-        }
-
-        private bool ValidarOrdenDeCobro(Peticion peticion)
-        {
-            Console.WriteLine("Validar Orden De Cobro");
-            return true;
-        }
-
-        private bool ValidarFormaDePago(Peticion peticion)
-        {
-            Console.WriteLine("Validar Forma De Pago");
-            return true;
+            return this.validadorStrategy.Validar(peticion);
         }
 
         /* Un método de validación por cada tipo de petición */
     }
-
 }
