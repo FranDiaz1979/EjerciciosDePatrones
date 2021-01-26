@@ -1,0 +1,11 @@
+﻿Un ejemplo muy practico: muchas web apps te permiten descargar un listado de datos en formato Excel.
+
+El ejercicio consiste en separar los distintos formateos aplicando el patron Decorator.
+
+Así el resultado seguirá los principios "S" y "O" de SOLID, y en un futuro se puede ir ampliando la configuración.
+
+TO DO:
+1. Refactorizar, la clase UtilidadesExcel pide a gritos que se integre en FicheroExcel
+2. Refactorizar, FileStream file se pasa en casi todas las funciones por lo que en este caso es mejor que sea una propiedad privada
+3. Preparar el código para usar el patrón: separar el código de FormatExcelFile usando Clean Code
+4. Aplicar el patrón Decorator a la forma en que se formatea el Excel

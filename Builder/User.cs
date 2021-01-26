@@ -7,11 +7,11 @@ namespace Builder
     class User
     {
         private int phone;
+        private int cp;
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Street { get; set; }
-        public int CP { get; set; }
         public string City { get; set; }
         public int Phone {
             get 
@@ -20,23 +20,33 @@ namespace Builder
             }
             set 
             { 
-                if (phone < 600000000)
+                if (value < 600000000)
                 {
                     throw new ArgumentException("The phone number is lower than expected.", nameof(Phone));
                 }
-                if (phone > 999999999)
+                if (value > 999999999)
                 {
                     throw new ArgumentException("The phone number is higher than expected.", nameof(Phone));
                 }
                 phone = value;
             }
         }
-        private int myVar;
 
-        public int MyProperty
+        public int CP
         {
-            get { return myVar; }
-            set { myVar = value; }
+            get { return cp; }
+            set
+            {
+                if (value < 1000)
+                {
+                    throw new ArgumentException("The CP number is lower than expected.", nameof(CP));
+                }
+                if (value > 30000)
+                {
+                    throw new ArgumentException("The CP number is higher than expected.", nameof(CP));
+                }
+                cp = value;
+            }
         }
 
         public bool IsAdmin { get; set; }

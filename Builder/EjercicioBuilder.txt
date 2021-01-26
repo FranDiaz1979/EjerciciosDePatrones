@@ -8,3 +8,11 @@ InicializarObligatorio (username, password y email)
 InicializarTodo
 IsAdmin
 Set...
+
+TO DO:
+1. Aplicar el patrón Builder de la forma más facil posible
+2. Refactorizar tests (opcional)
+3. Aplicar el patrón Builder con varios builder y Director
+	UserSpanishBuilder
+	UserEnglishBuilder
+4. Convertir el patron Builder en Fluent Builder
