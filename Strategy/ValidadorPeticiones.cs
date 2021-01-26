@@ -12,7 +12,6 @@ namespace Strategy
             {
                 case TipoPeticion.FormaDePago:
                     return ValidarFormaDePago(peticion);
-
                 case TipoPeticion.OrdenDeCobro:
                     return ValidarOrdenDeCobro(peticion);
                 default:

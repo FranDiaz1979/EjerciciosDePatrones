@@ -1,0 +1,10 @@
+﻿Para practicar builder he elegido el contexto de los tests donde veo muy util este patrón para facilitar 
+que se hagan más tests y a la vez usar clean code para que el código explique que objeto se está creando.
+
+En este ejercicio user es un modelo pequeño, pero en una app real tendría permisos, y más.
+
+El ejercicio consiste en aplicar el patrón builder y entre otros poner los siguientes métodos:
+InicializarObligatorio (username, password y email)
+InicializarTodo
+IsAdmin
+Set...
