@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Builder
 {
-    class User
+    public class User
     {
         private int phone;
         private int cp;
@@ -51,7 +51,7 @@ namespace Builder
 
         public bool IsAdmin { get; set; }
         public string Name { get; set; }
-        public string Subname { get; set; }
+        public string Surname { get; set; }
         public string Email { get; set; }
     }
 }
