@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Drawing;
     using System.IO;
     using System.Text;
 
@@ -24,7 +25,7 @@
                 {
                     case "xls":
                     case "xlsx":
-                    case "xlsm": 
+                    case "xlsm":
                         extension = value;
                         break;
                     default: throw new ArgumentException("La extension del fichero no es valida", nameof(Extension));
@@ -53,11 +54,38 @@
 
         private void FormatExcelFile(string title)
         {
-            // Formatea la cabecera de la pagina (fila 1 más ancha, con 1 color, con titulo en letra más grande, etc.)
-            // Pone el color de fondo elegido desde la fila 2 en adelante
-            // A veces queremos que el fichero alterne linea en color con linea en blanco
-            // Formatea los titulos de los campos (fila 2 en negrita con fondo de 1 color)
+            FormatExcelFileTitle(title, Color.Blue);
+            bool alternate = true;
+            if (alternate)
+            { 
+                FormatExcelFileAlternateBackground(Color.LightGreen);
+            }
+            else
+            {
+                FormatExcelFileBackground(Color.LightGreen);
+            }
+            FormatExcelFileHeaders(Color.Green);
+
             // etc. (he borrado 4 línea más que hace mi libreria de excels)
+        }
+
+        private void FormatExcelFileTitle(string title, Color titleColor)
+        {
+            // Formatea la cabecera de la pagina (fila 1 más ancha, con 1 color, con titulo en letra más grande, etc.)
+        }
+        private void FormatExcelFileBackground(Color backgroundColor)
+        {
+            // Pone el color de fondo elegido desde la fila 2 en adelante
+        }
+
+        private void FormatExcelFileAlternateBackground(Color backgroundColor)
+        {
+            // A veces queremos que el fichero alterne linea en color con linea en blanco
+        }
+
+        private void FormatExcelFileHeaders(Color headersColor)
+        {
+            // Formatea los titulos de los campos (fila 2 en negrita con fondo de 1 color)
         }
     }
 }
