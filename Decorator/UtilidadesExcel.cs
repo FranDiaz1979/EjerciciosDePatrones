@@ -29,8 +29,10 @@
         private void FormatExcelFile(FileStream file, string title)
         {
             // Formatea la cabecera de la pagina (fila 1 más ancha, con 1 color, con titulo en letra más grande, etc.)
+            // Pone el color de fondo elegido desde la fila 2 en adelante
+            // A veces queremos que el fichero alterne linea en color con linea en blanco
             // Formatea los titulos de los campos (fila 2 en negrita con fondo de 1 color)
-            // etc... 
+            // etc. (he borrado 4 línea más que hace mi libreria de excels)
         }
     }
 }
