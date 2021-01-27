@@ -1,0 +1,5 @@
+﻿Un ejemplo muy practico: muchas web apps te permiten descargar un listado de datos en formato Excel.
+
+El ejercicio consiste en separar los distintos formateos aplicando el patron Decorator.
+
+Así el resultado seguirá los principios "S" y "O" de SOLID, y en un futuro se puede ir ampliando la configuración.

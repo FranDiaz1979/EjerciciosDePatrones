@@ -1,0 +1,3 @@
+﻿En este ejercicio hay un code smell switch que sirve de ejemplo de la utilidad del patron Strategy.
+
+El ejercicio consiste en aplicar dicho patrón para evitar el code smell.
