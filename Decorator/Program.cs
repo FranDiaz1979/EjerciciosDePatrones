@@ -6,7 +6,12 @@
     {
         static void Main()
         {
-            Console.WriteLine("Patrón Decorator\n");
+            //Console.WriteLine();
+            Console.Title = "Patrón Decorator";
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+            Console.WriteLine();
 
             var excelFile = new FicheroExcel
             {
@@ -15,12 +20,18 @@
                 Extension = "xls",
             };
 
-            excelFile.GenerarFichero("select * from clients where active=1", "Listado de clientes");
+            var formatting = new FicheroExcelFormatting
+            {
+                QuerySQL = "select * from clients where active=1",
+                Title = "Listado de clientes",
+            };
 
-            Console.WriteLine("Fichero creado");
+            excelFile.GenerarFichero(formatting);
 
-            Console.Write("\n" +
-                "Presione cualquier tecla para cerrar esta ventana...");
+            Console.WriteLine();
+            Console.WriteLine(" Fichero generado");
+            Console.WriteLine();
+            Console.Write(" Presione cualquier tecla para cerrar esta ventana...");
             Console.ReadKey();
             Environment.Exit(0);
         }
