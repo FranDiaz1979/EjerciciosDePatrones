@@ -1,10 +1,7 @@
 ﻿namespace Decorator
 {
     using System;
-    using System.Collections.Generic;
-    using System.Drawing;
     using System.IO;
-    using System.Text;
 
     class FicheroExcel
     {
@@ -54,59 +51,36 @@
 
         private void CreateExcelFile()
         {
+            string filename = this.Path + this.FileName + "." + this.Extension;
+            if (File.Exists(filename))
+            {
+                throw new Exception("El fichero ya existe");
+            }
+
             // Es un ejemplo, no quiero crear el fichero
-
-            //string filename = this.Path + this.FileName + "." + this.Extension;
-            //if (File.Exists(filename))
-            //{
-            //    throw new Exception("El fichero ya existe");
-            //}
-
-            //this.file = File.Create(filename);
+            // this.file = File.Create(filename);
         }
 
         private void FillExcelFile(Object data)
         {
+            data.ToString();
         }
 
         private void FormatExcelFile(FicheroExcelFormatting formatting)
         {
-            FormatExcelFileTitle(formatting);
+            IFicheroExcelDecorator fichero = new FicheroExcelDecorator(file, formatting);
+            fichero = new FicheroExcelTitleDecorator(fichero);
             if (formatting.Alternate)
             { 
-                FormatExcelFileAlternateBackground(formatting);
+                fichero = new FicheroExcelAlternateBackgroundDecorator(fichero);
             }
             else
             {
-                FormatExcelFileBackground(formatting);
+                fichero = new FicheroExcelSolidBackgroundDecorator(fichero);
             }
-            FormatExcelFileHeaders(formatting);
+            fichero = new FicheroExcelHeadersDecorator(fichero);
 
-            // etc. (he borrado 4 línea más que hace mi libreria de excels)
-        }
-
-        private void FormatExcelFileTitle(FicheroExcelFormatting formatting)
-        {
-            // Formatea la cabecera de la pagina (fila 1 más ancha, con 1 color, con titulo en letra más grande, etc.)
-            Console.WriteLine(" Añadido titulo: "+ formatting.Title);
-            Console.WriteLine(" Añadido color al titulo: " + formatting.TitleColor.Name);
-        }
-        private void FormatExcelFileBackground(FicheroExcelFormatting formatting)
-        {
-            // Pone el color de fondo elegido desde la fila 2 en adelante
-            Console.WriteLine(" Añadido color de fondo: " + formatting.BackgroundColor.Name);
-        }
-
-        private void FormatExcelFileAlternateBackground(FicheroExcelFormatting formatting)
-        {
-            // A veces queremos que el fichero alterne linea en color con linea en blanco
-            Console.WriteLine(" Añadido color de fondo alterno: " + formatting.BackgroundColor.Name);
-        }
-
-        private void FormatExcelFileHeaders(FicheroExcelFormatting formatting)
-        {
-            // Formatea los titulos de los campos (fila 2 en negrita con fondo de 1 color)
-            Console.WriteLine(" Añadido headers de color: " + formatting.HeadersColor.Name);
+            // etc. (he borrado 4 líneas más que hace mi libreria de excels)
         }
     }
 }
