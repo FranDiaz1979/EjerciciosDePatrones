@@ -8,8 +8,6 @@
         private User user;
         private UserBuilder userBuilder;
         
-        // TODO: Quitar los try/catch y poner Assert.Throws()
-
         [SetUp]
         public void SetUp() 
         {
@@ -32,14 +30,8 @@
         {
             userBuilder.InitializeRequired(user);
 
-            try
-            {
-                userBuilder.SetPhone(user, 555);
-            }
-            catch (ArgumentException)
-            {
-                Assert.Pass();
-            }
+            var exception = Assert.Throws<ArgumentException>(() => userBuilder.SetPhone(user, 555));
+            Assert.AreEqual("The phone number is lower than expected. (Parameter 'Phone')", exception.Message);
         }
 
         [Test]
@@ -47,14 +39,8 @@
         {
             userBuilder.InitializeRequired(user);
 
-            try
-            {
-                userBuilder.SetPhone(user, 1234567890);
-            }
-            catch (ArgumentException)
-            {
-                Assert.Pass();
-            }
+            var exception = Assert.Throws<ArgumentException>(() => userBuilder.SetPhone(user, 1234567890));
+            Assert.AreEqual("The phone number is higher than expected. (Parameter 'Phone')", exception.Message);
         }
 
         [Test]
@@ -62,14 +48,8 @@
         {
             userBuilder.InitializeRequired(user);
 
-            try
-            {
-                userBuilder.SetCP(user, 1);
-            }
-            catch (ArgumentException)
-            {
-                Assert.Pass();
-            }
+            var exception = Assert.Throws<ArgumentException>(() => userBuilder.SetCP(user, 1));
+            Assert.AreEqual("The CP number is lower than expected. (Parameter 'CP')", exception.Message);
         }
 
         [Test]
@@ -77,15 +57,8 @@
         {
             userBuilder.InitializeRequired(user);
 
-            try
-            {
-                userBuilder.SetCP(user, 1234567890);
-            }
-
-            catch (ArgumentException)
-            {
-                Assert.Pass();
-            }
+            var exception = Assert.Throws<ArgumentException>(() => userBuilder.SetCP(user, 123456789));
+            Assert.AreEqual("The CP number is higher than expected. (Parameter 'CP')", exception.Message);
         }
 
         [Test]
